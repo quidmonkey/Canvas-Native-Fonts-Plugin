@@ -1,3 +1,9 @@
+/*
+ * Font Manager Plugin
+ * Written by Abraham Walters
+ * May 2012
+ */
+
 ig.module(
     'plugins.font-manager'
 )
@@ -55,7 +61,7 @@ FontManager = ig.Class.extend({
 Font.inject({
      
 	alpha: 1,					//alpha, 0 = translucent, 1 = opaque
-	lifetime: null,			//lifetime - keep null or set to 0 to have font live indefinitely
+	lifetime: null,				//lifetime - keep null or set to 0 to have font live indefinitely
 	_kill: false,				//state
 	
 	draw: function( text, x, y, align, color ) {
