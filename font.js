@@ -1,3 +1,8 @@
+/*
+ * Font Manager Plugin
+ * Written by Abraham Walters
+ * May 2012
+ */
 ig.module(
     'plugins.font'
 )
