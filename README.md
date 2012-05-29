@@ -29,10 +29,11 @@ to the corresponding class it's a property of (typically, ig.game.update()).
 When it comes time to draw, you can specify several optional parameters:
 
 font.draw();
-font.draw( 'Hello World' ); 
+font.draw( 'Hello World' );
 font.draw( 'Hello World', ig.system.width / 2, ig.system.height / 2 );
 font.draw( 'Hello World', ig.system.width / 2, ig.system.height / 2, 'right' );
 font.draw( 'Hello World', ig.system.width / 2, ig.system.height / 2, 'right', 'rgba( 255, 0, 0, 1 )' );
+
 
 You can see the optional parameter paradigm at work here.
 
