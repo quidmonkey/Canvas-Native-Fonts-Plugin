@@ -14,7 +14,7 @@ ig.module(
 Font = ig.Class.extend({
      
 	align: 'left',					//alignment - left, center, right, start, end
-	baseline: 'top',				//baseline - top, hanging, middle, alphabetic, ideographic, bottom
+	baseline: 'center',				//baseline - top, hanging, middle, alphabetic, ideographic, bottom
 	colors: [ '#FFFFFF' ],			//array of colors to "animate" through
 	current: 0,						//current color in colors array
 	flicker: 0.15,					//flicker - colors array timer
