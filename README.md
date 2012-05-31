@@ -29,10 +29,15 @@ to the corresponding class it's a property of (typically, ig.game.update()).
 When it comes time to draw, you can specify several optional parameters:
 
 font.draw();
-font.draw( 'Hello World' ); 
+
+font.draw( 'Hello World' );
+
 font.draw( 'Hello World', ig.system.width / 2, ig.system.height / 2 );
+
 font.draw( 'Hello World', ig.system.width / 2, ig.system.height / 2, 'right' );
+
 font.draw( 'Hello World', ig.system.width / 2, ig.system.height / 2, 'right', 'rgba( 255, 0, 0, 1 )' );
+
 
 You can see the optional parameter paradigm at work here.
 
@@ -54,7 +59,7 @@ heavily commented.
 Included with the Font class is an optional FontManager class for those who are feeling lazy.
 It will keep track of all your Fonts and .draw() and .update() each of them.
 
-After instatiating the FontManager, individual Fonts can be added via the add()
+After instantiating the FontManager, individual Fonts can be added via the add()
 or spawn() methods:
 
 var fm = new FontManager();
