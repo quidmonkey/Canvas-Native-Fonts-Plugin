@@ -3,8 +3,8 @@ Canvas-Native-Fonts-Plugin
 
 Canvas-Native Fonts Plugin for ImpactJS
 
-This plugin provides an ImpactJS api for using Canvas-native fonts. It offers
-movement, color and animation along with standard Font drawing.
+<b>This plugin provides an ImpactJS api for using Canvas-native fonts. It offers
+movement, color and animation along with standard Font drawing.</b>
 
 Typically, you instantiate a Font object like this:
 
