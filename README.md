@@ -3,12 +3,12 @@ Canvas-Native-Fonts-Plugin
 
 Canvas-Native Fonts Plugin for ImpactJS
 
-<b>This plugin provides an ImpactJS api for using Canvas-native fonts. It offers
-movement, color and animation along with standard Font drawing.</b>
+This plugin provides an ImpactJS api for using Canvas-native fonts. It offers
+movement, color and animation along with standard Font drawing.
 
 Typically, you instantiate a Font object like this:
 
-var font = new Font( '20px Garamond' );
+<quote>var font = new Font( '20px Garamond' );</quote>
 
 It's important the size gets listed first in the font string - this is a Canvas requirement.
 You can also add text and positioning if desired:
