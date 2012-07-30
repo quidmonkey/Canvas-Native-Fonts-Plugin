@@ -13,7 +13,7 @@ var font = new Font( '20px Garamond' );
 It's important the size gets listed first in the font string - this is a Canvas requirement.
 You can also add text and positioning if desired:
 
-var font = new Font( '20px Garamond', 'Hello World', ig.system.width / 2, ig.system.height / 2 );
+var font = new Font( '20px Garamond', ig.system.width / 2, ig.system.height / 2 );
 
 For ease-of-use, most parameters are optional for method calls, including the constructor.
 When omitting parameters, values will default to the preset properties defined for the Font class.
@@ -51,7 +51,7 @@ Again, you'll need to add font.draw() to the corresponding class it's a property
 An important method is the global Font.Width(). Often, you'll need to know the width of a font in order to
 properly position it upon the canvas. It's signature is
 
-Font.Width( font, string ) i.e. Font.Width( '20px Garamond', 'Hello World' );
+Font.Width( string, font ) i.e. Font.Width( 'Hello World', '20px Garamond' );
 
 For additional information, you are encouraged to take a look at the Font plugin code, which has been
 heavily commented.
@@ -63,9 +63,9 @@ After instantiating the FontManager, individual Fonts can be added via the add()
 or spawn() methods:
 
 var fm = new FontManager();
-var font = new Font( '20px Garamond, 'Hello World' );<br>
+var font = new Font( '20px Garamond );<br>
 fm.add( 0.3, font );<br>
-fm.spawn( 0.2, '20px Garamond', 'Hello World' );
+fm.spawn( 0.2, '20px Garamond' );
 
 Notice that both methods require a number as their first parameter. This is the
 lifetime of a font. The FontManager is designed to track a font for a specific 

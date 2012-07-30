@@ -30,7 +30,7 @@ Font = ig.Class.extend({
 	//the other parameters are overloaded
 	init: function( font, x, y, settings ) {
 		this.flicker = new ig.Timer( this.flicker );
-		this.font = font;
+		this.font = font || '20px Garamond';
 		this.pos.x = x || 0;
 		this.pos.y = y || 0;
 		this.size = this.getSize();
