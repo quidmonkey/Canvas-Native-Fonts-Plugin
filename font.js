@@ -1,7 +1,8 @@
 /*
- * Font Manager Plugin
+ * Canvas-Native Font Plugin
  * Written by Abraham Walters
- * May 2012
+ * v1.0 - May 2012
+ * v1.1 - July 2012
  */
 ig.module(
     'plugins.font'
@@ -14,24 +15,24 @@ ig.module(
 Font = ig.Class.extend({
      
 	align: 'left',					//alignment - left, center, right, start, end
-	baseline: 'center',				//baseline - top, hanging, middle, alphabetic, ideographic, bottom
-	colors: [ '#FFFFFF' ],				//array of colors to "animate" through
-	current: 0,					//current color in colors array
-	flicker: 0.15,					//flicker - colors array timer
-	font: null,					//font
-	pos: { x: 0, y: 0 },				//position
-	size: 0,					//font size
-	text: '',					//text
-	vel: { x: 0, y: 0 },				//velocity
+	alpha: 1,						//opacity: 0 - transparent, 1 - opaque
+	baseline: 'top',				//baseline - top, hanging, middle, alphabetic, ideographic, bottom
+	colors: [ '#FFFFFF' ],			//array of colors to "animate" through
+	current: 0,						//current color in colors array
+	flicker: 0.15,					//flicker - colors array animation timer
+	font: null,						//font
+	pos: { x: 0, y: 0 },			//position
+	size: 0,						//font size
+	text: '',						//text
+	vel: { x: 0, y: 0 },			//velocity
 	
 	//only font parameter required
 	//the other parameters are overloaded
-	init: function( font, text, x, y, settings ) {
+	init: function( font, x, y, settings ) {
 		this.flicker = new ig.Timer( this.flicker );
 		this.font = font;
 		this.pos.x = x || 0;
 		this.pos.y = y || 0;
-		this.text = text || '';
 		this.size = this.getSize();
 		ig.merge( this, settings );
 	},
@@ -40,13 +41,27 @@ Font = ig.Class.extend({
 	//all parameters are overloaded
 	draw: function( text, x, y, align, color ) {
 		var ctx = ig.system.context;
-		ctx.font = this.font;
+
+		//the current canvas font is cached globally
+		//if the font does not match what is requested
+		//to be drawn, both the global cache and canvas
+		//font is updated
+		//this is done because updating the canvas font 
+		//each draw is costly 
+		if( !ig.game._font || ig.game._font !== this.font ){
+			ig.game._font = this.font;
+			ctx.font = this.font;
+		}
+
+		ctx.save();
+		ctx.globalAlpha = this.alpha;
 		ctx.textAlign = align || this.align;
 		ctx.textBaseline = this.baseline;
 		ctx.fillStyle = color || this.colors[this.current];
 		ctx.fillText( text || this.text,
-					ig.system.getDrawPos( ( x || this.pos.x ) - ig.game.screen.x ),
-					ig.system.getDrawPos( ( y || this.pos.y ) - ig.game.screen.y ) );
+					ig.system.getDrawPos( ( x || this.pos.x ) ), //- ig.game.screen.x ),
+					ig.system.getDrawPos( ( y || this.pos.y ) ) ); //- ig.game.screen.y ) );
+		ctx.restore();
 	},
 	
 	//no parameter required
@@ -61,7 +76,7 @@ Font = ig.Class.extend({
 	//will return size of passed in text if parameter given
 	//will return size of text property if no parameter given
 	getWidth: function( text ){
-		return Font.Width( this.font, text || this.text );
+		return Font.Width( text || this.text, this.font );
 	},
 	
 	update: function() {  
@@ -79,9 +94,15 @@ Font = ig.Class.extend({
 
 //define global function for calculating width
 //no font instantiation needed
-Font.Width = function( font, text ){
+Font.Width = function( text, font ){
 	var ctx = ig.system.context;
-	ctx.font = font;
+
+	//is font change necessary?
+	if( !ig.game._font || font && ig.game._font !== font ){
+		ig.game._font = font;
+		ctx.font = font;
+	}
+
 	return ctx.measureText( text ).width / ig.system.scale;
 };
 

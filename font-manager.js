@@ -1,7 +1,8 @@
 /*
  * Font Manager Plugin
  * Written by Abraham Walters
- * May 2012
+ * v1.0 - May 2012
+ * v1.1 - July 2012
  */
 
 ig.module(
@@ -37,8 +38,8 @@ FontManager = ig.Class.extend({
 	//spawns a new font and tracks it
 	//set lifetime = 0 or null to have font live indefinitely
 	//returns the new note
-	spawn: function( lifetime, font, text, x, y, settings ){
-		var note = new Font( font, text, x, y, settings );
+	spawn: function( lifetime, font, x, y, settings ){
+		var note = new Font( font, x, y, settings );
 		if( lifetime ){
 			note.lifetime = new ig.Timer( lifetime );
 		}
@@ -60,7 +61,6 @@ FontManager = ig.Class.extend({
 //inject lifetime & fading properties into Font
 Font.inject({
      
-	alpha: 1,					//alpha, 0 = translucent, 1 = opaque
 	lifetime: null,				//lifetime - keep null or set to 0 to have font live indefinitely
 	_kill: false,				//state
 	
