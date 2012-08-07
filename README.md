@@ -1,33 +1,30 @@
-Canvas-Native-Fonts-Plugin
-==========================
-
-Canvas-Native Fonts Plugin for ImpactJS
+# Canvas-Native-Fonts-Plugin for ImpactJS
 
 This plugin provides an ImpactJS api for using Canvas-native fonts. It offers
 movement, color and animation along with standard Font drawing.
 
 Typically, you instantiate a Font object like this:
-
+```javascript
 var font = new Font( '20px Garamond' );
-
+```
 It's important the size gets listed first in the font string - this is a Canvas requirement.
 You can also add text and positioning if desired:
-
+```javascript
 var font = new Font( '20px Garamond', ig.system.width / 2, ig.system.height / 2 );
-
+```
 For ease-of-use, most parameters are optional for method calls, including the constructor.
 When omitting parameters, values will default to the preset properties defined for the Font class.
 Thus,
-
+```javascript
 var font = new Font(); //defaults to '20px Garamond' style font with no font string
-
+```
 is legal, though not necessarily desirable.
 
 If you specify a velocity, the Font will move. To do this, you'll need to add font.update()
 to the corresponding class it's a property of (typically, ig.game.update()).
 
 When it comes time to draw, you can specify several optional parameters:
-
+```javascript
 font.draw();
 
 font.draw( 'Hello World' );
@@ -37,8 +34,7 @@ font.draw( 'Hello World', ig.system.width / 2, ig.system.height / 2 );
 font.draw( 'Hello World', ig.system.width / 2, ig.system.height / 2, 'right' );
 
 font.draw( 'Hello World', ig.system.width / 2, ig.system.height / 2, 'right', 'rgba( 255, 0, 0, 1 )' );
-
-
+```
 You can see the optional parameter paradigm at work here.
 
 The first draws the font with all the preset properties. The second draws a specific font string.
@@ -50,9 +46,9 @@ Again, you'll need to add font.draw() to the corresponding class it's a property
 
 An important method is the global Font.Width(). Often, you'll need to know the width of a font in order to
 properly position it upon the canvas. It's signature is
-
+```javascript
 Font.Width( string, font ) i.e. Font.Width( 'Hello World', '20px Garamond' );
-
+```
 For additional information, you are encouraged to take a look at the Font plugin code, which has been
 heavily commented.
 
@@ -61,12 +57,12 @@ It will keep track of all your Fonts and .draw() and .update() each of them.
 
 After instantiating the FontManager, individual Fonts can be added via the add()
 or spawn() methods:
-
+```javascript
 var fm = new FontManager();
 var font = new Font( '20px Garamond );<br>
 fm.add( 0.3, font );<br>
 fm.spawn( 0.2, '20px Garamond' );
-
+```
 Notice that both methods require a number as their first parameter. This is the
 lifetime of a font. The FontManager is designed to track a font for a specific 
 time period and then kill() it off. If you want the font to stick around indefinitely,
