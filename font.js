@@ -15,16 +15,16 @@ ig.module(
 Font = ig.Class.extend({
      
 	align: 'left',					//alignment - left, center, right, start, end
-	alpha: 1,						//opacity: 0 - transparent, 1 - opaque
+	alpha: 1,					//opacity: 0 - transparent, 1 - opaque
 	baseline: 'top',				//baseline - top, hanging, middle, alphabetic, ideographic, bottom
-	colors: [ '#FFFFFF' ],			//array of colors to "animate" through
-	current: 0,						//current color in colors array
+	colors: [ '#FFFFFF' ],				//array of colors to "animate" through
+	current: 0,					//current color in colors array
 	flicker: 0.15,					//flicker - colors array animation timer
-	font: null,						//font
-	pos: { x: 0, y: 0 },			//position
-	size: 0,						//font size
-	text: '',						//text
-	vel: { x: 0, y: 0 },			//velocity
+	font: null,					//font
+	pos: { x: 0, y: 0 },				//position
+	size: 0,					//font size
+	text: '',					//text
+	vel: { x: 0, y: 0 },				//velocity
 	
 	//only font parameter required
 	//the other parameters are overloaded
