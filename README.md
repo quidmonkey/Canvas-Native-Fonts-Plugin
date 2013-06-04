@@ -59,7 +59,7 @@ After instantiating the FontManager, individual Fonts can be added via the add()
 or spawn() methods:
 ```javascript
 var fm = new FontManager();
-var font = new Font( '20px Garamond );
+var font = new Font( '20px Garamond' );
 fm.add( 0.3, font );
 fm.spawn( 0.2, '20px Garamond' );
 ```
