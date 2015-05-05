@@ -58,6 +58,13 @@ Font = ig.Class.extend({
 		ctx.textAlign = align || this.align;
 		ctx.textBaseline = this.baseline;
 		ctx.fillStyle = color || this.colors[this.current];
+
+		if (this.shadow) {
+			ctx.shadowColor = this.shadow.color;
+			ctx.shadowBlur = this.shadow.blur;
+			ctx.shadowOffsetX = this.shadow.x;
+			ctx.shadowOffsetY = this.shadow.y;
+		}
 		ctx.fillText( text || this.text,
 					ig.system.getDrawPos( ( x || this.pos.x ) ), //- ig.game.screen.x ),
 					ig.system.getDrawPos( ( y || this.pos.y ) ) ); //- ig.game.screen.y ) );
