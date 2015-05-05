@@ -49,6 +49,22 @@ properly position it upon the canvas. It's signature is
 ```javascript
 Font.Width( string, font ) i.e. Font.Width( 'Hello World', '20px Garamond' );
 ```
+
+## Text shadow
+
+Canvas text shadow properties can be applied using the `shadow` property in `settings`.
+
+```javascript
+font.draw( 'Hello World', ig.system.width / 2, ig.system.height / 2, {
+  shadow: {
+    shadowBlur: 5,
+    shadowColor: '#ff0000',
+    shadowOffsetY: 3,
+    shadowOffsetX: 0
+  }
+} );
+```
+
 For additional information, you are encouraged to take a look at the Font plugin code, which has been
 heavily commented.
 
